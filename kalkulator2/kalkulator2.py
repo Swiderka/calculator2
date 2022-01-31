@@ -1,5 +1,5 @@
 import logging
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.INFO, format='%(message)s')
 
 def add(a, b):
   logging.info(f"Dodaje: {a} i {b}.")
@@ -22,28 +22,15 @@ operations = {
 }
 
 def get_data():
+    op = input("Podaj dzialanie, poslugujac sie odpowiednia liczba: 1 Dodawanie, 2 Odejmowanie, 3 Mnozenie, 4 Dzielenie:")
     a = float(input("Podaj skladnik 1:"))
     b = float(input("Podaj skladnik 2:"))
-    return operations, a, b
-
+    return op, a, b
+  
 def calculator():
-    operations, a, b = get_data()
+    op, a, b = get_data()
     result = operations[op](a, b)
-
-
-# def calculator(a, b, action):
-#     if operations == 1:
-#         return add(a, b)
-#     elif operations == 2:
-#         return sub(a, b)
-#     elif operations == 3:
-#         return multi(a, b)
-#     elif operations == 4:
-#         return div(a, b)
-#     else:
-#         return ValueError
+    return result
 
 if __name__ == "__main__":
-    action = int(input("Podaj dzialanie, poslugujac sie odpowiednia liczba: 1 Dodawanie, 2 Odejmowanie, 3 Mnozenie, 4 Dzielenie:"))
-    print(f"Wynik to: {calculator(get_data())}")
-
+     print(f"Wynik to: {calculator()}")
